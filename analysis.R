@@ -56,14 +56,14 @@ num_features_counties <- ncol(counties)
 # 2.a How many total COVID cases have there been in the U.S. by the most recent
 # date in the dataset? Make sure to pull() this number `total_us_cases`
 total_us_cases <- national %>%
-  filter(date == max(date)) %>%
+  filter(date == max(date, na.rm = TRUE)) %>%
   pull(cases)
 
 # 2.b How many total COVID-related deaths have there been in the U.S. by the
 # most recent date in the dataset? Make sure to pull() this number
 # `total_us_deaths`
 total_us_deaths <- national %>%
-  filter(date == max(date)) %>%
+  filter(date == max(date, na.rm = TRUE)) %>%
   pull(deaths)
 
 # 2.c Which state has had the highest number of COVID cases? Make sure to pull()
@@ -74,7 +74,7 @@ state_highest_cases <- states %>%
 
 # 2.d What is the highest number of cases in a state? Make sure to pull() this
 # number `num_highest_state`
-num_highest_state <- max(pull(states, cases))
+num_highest_state <- max(pull(states, cases), na.rm = TRUE)
 
 # 2.e Which state has the highest ratio of deaths to cases (deaths/cases), as of
 # the most recent date? Make sure to pull() this value
@@ -98,7 +98,7 @@ state_lowest_cases <- min(states %>%
 
 # 2.g What is the highest number of cases that have happened in a single county?
 # Make sure to pull() this NUMBER `num_highest_cases_county`
-num_highest_cases_county <- max(pull(counties, cases))
+num_highest_cases_county <- max(pull(counties, cases), na.rm = TRUE)
 
 # 2.h Which county had this highest number of cases? Make sure to pull() this
 # COUNTY `county_highest_cases`
@@ -219,7 +219,7 @@ total_cases_counties <- counties %>%
   summarise(county_total_cases = sum(cases))
 # 4.b Join `total_cases_counties` with the `national` dataframe.
 # Save this dataframe as `all_totals`.
-all_totals <- left_join(total_cases_counties, national, by = "date")
+all_totals <- left_join(national, total_cases_counties, by = "date")
 
 # 4.c Filter the all_totals dataframe to find only the rows where the
 # "county_total_cases" column does not match the "cases" column
