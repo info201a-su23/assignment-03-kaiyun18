@@ -27,16 +27,17 @@ Guess: Which state do you think has the highest number of COVID cases, and which
 ## Reflection 2
 Did the number of COVID cases and deaths surprise you? Why or why not? What about the states with the highest and lowest number of cases? How did your guesses line up with the actual results? Answer in at least 1-3 sentences
 
-I was genuinely surprised by the number since I never anticipated it would be that substantial. The states with the highest and lowest number of cases align with my expectations.
+I was genuinely surprised by the number since I never anticipated it would be that substantial. Before doing this research I believe that most of the states have pretty good epidemic prevention and control measures. The states with the highest and lowest number of cases align with my expectations.
 
 ## Reflection 3
 Which county has the highest number of cases in the state of Washington, and does it surprise you? Why or why not? (You may need to google this county to learn about it) Answer at least in 1-3 sentences
 
-King County having the highest number of cases in the state of Washington didn't surprise me due to its association with Seattle. Before doing the research, I've expected a county includes city Seattle, which have higher visibility and a coastal geographical location, to have the highest number of cases.
+King County having the highest number of cases in the state of Washington didn't surprise me due to its association with Seattle. Before doing the research, I've expected a county includes city Seattle, which is really famous around the world and has a coastal geographical location, to have the highest number of cases.
 
 ## Reflection 4
 Why are there so many observations (counties) in the variable `lowest_deaths_in_each_state`? That is, wouldn't you expect the number to be around 50? Why is the number greater than 50? Answer in at least 1-3 sentences
-This is because the dataset contains each county multiple times with different dates while they have the exactly the same death number.
+
+The observations in the variable `lowest_deaths_in_each_state` is greater than the number of counties in U.S. because the dataset contains each county multiple times with different dates while they have the exactly the same death number.
 
 ## Reflection 5
 What do you think about the number and scale of the inconsistencies in the data? Does the fact that there are inconsistencies mean that people should not use this data? Why or why not? Answer in at least 1-3 sentences

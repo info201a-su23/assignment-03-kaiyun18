@@ -41,7 +41,6 @@ num_features_national <- ncol(national)
 num_features_states <- ncol(states)
 num_features_counties <- ncol(counties)
 
-
 # 2 Exploratory Analysis ----------------------------------------------------
 # Reflection 1 (answer in the README.md file)
 
@@ -81,6 +80,7 @@ num_highest_state <- max(pull(states, cases), na.rm = TRUE)
 # HINT: You may need to create a new column in order to do this:
 # `state_highest_ratio`
 state_highest_ratio <- max(states %>%
+                             filter(date == max(date, na.rm = TRUE)) %>%
                              mutate(deaths/cases) %>%
                              pull(), na.rm = TRUE)
 
@@ -151,7 +151,7 @@ date_most_deaths <- national %>%
 # to pull() this value `most_deaths`
 most_deaths <- national %>%
   filter(new_deaths == max(new_deaths, na.rm = TRUE)) %>%
-  pull(deaths)
+  pull(new_deaths)
 
 # You can plot this data with built-in plot functions
 plot(national$new_cases)
@@ -181,6 +181,7 @@ highest_cases_in_WA <- data.frame(counties %>%
     filter(state == "Washington") %>%
     filter(cases == max(cases, na.rm = TRUE)) %>%
     ungroup())
+
 # 3.b For each state, what is the county with the lowest number of COVID-related
 # deaths (not cases this time)?
 # Make a dataframe that has every state and the county with lowest number of
@@ -217,6 +218,7 @@ lowest_deaths_in_each_state <- data.frame(counties %>%
 total_cases_counties <- counties %>%
   group_by(date) %>%
   summarise(county_total_cases = sum(cases))
+
 # 4.b Join `total_cases_counties` with the `national` dataframe.
 # Save this dataframe as `all_totals`.
 all_totals <- left_join(national, total_cases_counties, by = "date")
